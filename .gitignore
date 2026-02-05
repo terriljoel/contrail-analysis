@@ -3,3 +3,7 @@ activate_venv.bat
 *.pyc
 data/
 *.txt
+troubleshoot.py
+doc
+notebooks/
+.gitignore
