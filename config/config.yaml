@@ -1,0 +1,63 @@
+project:
+  name: contrail-mvp
+  description: Contrail-aware cruise altitude adjustment
+
+paths:
+  data_root: data
+  raw_opensky: data/raw/opensky
+  raw_era5: data/raw/era5
+  processed_opensky_points: data/processed/opensky_points
+  processed_opensky_segments: data/processed/opensky_segments
+  processed_era5_pl: data/processed/era5_pl
+  processed_scores: data/processed/scores
+  interim: data/interim
+  outputs: data/outputs
+  figures: data/outputs/figures
+
+opensky:
+  api_root: https://opensky-network.org/api
+  token_url: https://auth.opensky-network.org/auth/realms/opensky-network/protocol/openid-connect/token
+  bbox:
+    germany: [47.2, 5.9, 55.1, 15.3]
+    europe: [34.0, -25.0, 72.0, 45.0]
+  trino:
+    host: trino.opensky-network.org
+    port: 443
+    http_scheme: https
+    catalog: minio
+    schema: osky
+    table: state_vectors_data4
+    user: your_username
+    max_rows_per_hour: 0
+
+era5:
+  pressure_levels_hpa: [200, 225, 250, 300, 350]
+  grid_step_deg: 0.25
+
+scoring:
+  rhi_excess_scale: 20.0
+  night_weight: 1.5
+  issr_threshold: 100.0
+
+policy:
+  max_changes: 2
+  fuel_penalty: 0.05
+  scale_by_distance: false
+
+rl:
+  enabled: false
+  algo: tabular_q_learning
+  gamma: 0.99
+  batch_size: 64
+  replay_size: 100000
+  epsilon_start: 1.0
+  epsilon_end: 0.05
+  epsilon_decay_steps: 50000
+  target_update_steps: 1000
+  learning_rate: 0.0005
+
+ui:
+  max_download_days: 1
+  max_poll_minutes: 30
+  max_flights: 300
+  polite_notice: true
