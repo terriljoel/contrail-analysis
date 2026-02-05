@@ -1,9 +1,0 @@
-activate_venv.bat
-.env
-*.pyc
-data/
-*.txt
-troubleshoot.py
-doc
-notebooks/
-.gitignore
