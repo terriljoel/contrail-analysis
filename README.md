@@ -3,6 +3,9 @@
 ## Motivation
 Contrails can contribute significantly to aviation’s near-term climate impact. This project explores a practical, data-driven workflow to estimate contrail formation potential and test cruise-altitude adjustments that reduce contrail risk while keeping operational constraints in view. The goal is a transparent MVP that connects flight trajectories with weather physics and produces interpretable, per-flight recommendations.
 
+## Demo
+![Demo](assets/demo.gif)
+
 ## What This Project Does
 - Downloads OpenSky flight trajectories (raw points) and ERA5 pressure-level weather.
 - Processes trajectories into flight segments, merges weather, and computes RHi/ISSR.
